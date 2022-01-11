@@ -1,0 +1,189 @@
+:root{
+    --primary-color : #252526;
+    --secondary-color : #2D2D2D;
+    --text-color: #FFFFFF;
+    --width-collapsed: 30px;
+    --width-expanded: 200px;
+    --margin-x: 0px 10px;
+    --top-separation: 20px;
+}
+.animation{
+    transition: all 0.3s ease-in-out;
+}
+
+//Main Content
+.bloqueo-screen{
+    &::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        background-color: var(--primary-color);
+        opacity: calc(0.7);
+    }
+}.bloqueo-screen-active{
+    &::before{
+        content: "";
+        margin-left: calc(var(--width-expanded) - 50px);
+        position: absolute;
+        height: 100%;
+        width: calc(100% - var(--width-expanded));
+        background-color: var(--primary-color);
+        opacity: calc(0.7);
+        @extend .animation;
+    }
+}
+
+.main{
+    margin-left: calc(var(--width-collapsed) + 20px);
+}
+//Btn Sidebar
+#menu-btn{
+    cursor: pointer;
+    width: var(--width-collapsed);
+    & .menu-hamburger{
+        height: 3px;
+        background-color: white;
+        margin-bottom: 5px;
+    }
+}
+
+
+//Menu Sidebar
+.menu-expanded{
+    width: var(--width-expanded);
+    //width: 70px;
+    position: fixed;
+    height: 100%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    @extend .animation;
+    & #header{
+        margin: var(--margin-x);
+        margin-top: var(--top-separation);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        & #title{
+            white-space: nowrap;
+        }
+    }
+    & #profile{
+        margin-top: var(--top-separation);
+        & #photo{
+            display: flex;
+            justify-content: center;
+            & img{
+                width: 50%;
+                border-radius: 50%;
+            }
+        }
+        & #name{
+            white-space: nowrap;
+            text-align: center;
+        }
+    }
+    & #menu-items{
+        margin-top: var(--top-separation);
+        & a{
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 5px 0px;
+            display: flex;
+            align-items: center;
+            & .icon{
+                width: var(--width-collapsed);
+                margin: var(--margin-x);
+                & img{
+                    width: 100%;
+                }
+            }
+            & .title{
+                & span{
+                    font-size: 10pt;
+                }
+            }
+        }
+        & a:hover{
+            background-color: var(--primary-color);
+        }
+    }
+}
+.menu-collapsed{
+    width: calc(var(--width-collapsed) + 20px);
+    position: fixed;
+    height: 100%;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+    & #header{
+        margin: var(--margin-x);
+        margin-top: var(--top-separation);
+        & #title{
+            display: none;
+        }
+    }
+    & #profile{
+        width: var(--width-collapsed);
+        margin: var(--margin-x);
+        margin-top: var(--top-separation);
+        & #photo{
+            & img{
+                width: 100%;
+                border-radius: 50%;
+            }
+        }
+        & #name{
+            display: none;
+        }
+    }
+    & #menu-items{
+        margin-top: var(--top-separation);
+        & a{
+            color: var(--text-color);
+            padding: 5px 0px;
+            display: flex;
+            align-items: center;
+            & .icon{
+                width: var(--width-collapsed);
+                margin: var(--margin-x);
+                & img{
+                    width: 100%;
+                }
+            }
+            & .title{
+                display: none;
+            }
+        }
+        & a:hover{
+            background-color: var(--primary-color);
+        }
+        
+    }
+    [data-title]:hover:after {
+        opacity: 1;
+        transition: all 0.1s ease 0.1s;
+        visibility: visible;
+    }
+    
+    [data-title]:after {
+        content: attr(data-title);
+        background-color: #333;
+        color: #fff;
+        font-size: 14px;
+        font-family: Raleway;
+        position: absolute;
+        padding: 3px 20px;
+        left: 100%;
+        white-space: nowrap;
+        box-shadow: 1px 1px 3px #222222;
+        opacity: 0;
+        border: 1px solid #111111;
+        z-index: 99999;
+        visibility: hidden;
+        
+    }
+    [data-title] {
+        position: relative;
+    }
+}
+//End Menu Sidebar

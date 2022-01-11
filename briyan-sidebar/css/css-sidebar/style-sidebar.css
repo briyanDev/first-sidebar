@@ -1,0 +1,225 @@
+:root {
+  --primary-color: #252526;
+  --secondary-color: #2D2D2D;
+  --text-color: #FFFFFF;
+  --width-collapsed: 30px;
+  --width-expanded: 200px;
+  --margin-x: 0px 10px;
+  --top-separation: 20px;
+}
+
+.animation, .bloqueo-screen-active::before, .menu-expanded {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.bloqueo-screen::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  background-color: var(--primary-color);
+  opacity: calc(0.7);
+}
+
+.bloqueo-screen-active::before {
+  content: "";
+  margin-left: calc(var(--width-expanded) - 50px);
+  position: absolute;
+  height: 100%;
+  width: calc(100% - var(--width-expanded));
+  background-color: var(--primary-color);
+  opacity: calc(0.7);
+}
+
+.main {
+  margin-left: calc(var(--width-collapsed) + 20px);
+}
+
+#menu-btn {
+  cursor: pointer;
+  width: var(--width-collapsed);
+}
+
+#menu-btn .menu-hamburger {
+  height: 3px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.menu-expanded {
+  width: var(--width-expanded);
+  position: fixed;
+  height: 100%;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.menu-expanded #header {
+  margin: var(--margin-x);
+  margin-top: var(--top-separation);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu-expanded #header #title {
+  white-space: nowrap;
+}
+
+.menu-expanded #profile {
+  margin-top: var(--top-separation);
+}
+
+.menu-expanded #profile #photo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.menu-expanded #profile #photo img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.menu-expanded #profile #name {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.menu-expanded #menu-items {
+  margin-top: var(--top-separation);
+}
+
+.menu-expanded #menu-items a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 5px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu-expanded #menu-items a .icon {
+  width: var(--width-collapsed);
+  margin: var(--margin-x);
+}
+
+.menu-expanded #menu-items a .icon img {
+  width: 100%;
+}
+
+.menu-expanded #menu-items a .title span {
+  font-size: 10pt;
+}
+
+.menu-expanded #menu-items a:hover {
+  background-color: var(--primary-color);
+}
+
+.menu-collapsed {
+  width: calc(var(--width-collapsed) + 20px);
+  position: fixed;
+  height: 100%;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-collapsed #header {
+  margin: var(--margin-x);
+  margin-top: var(--top-separation);
+}
+
+.menu-collapsed #header #title {
+  display: none;
+}
+
+.menu-collapsed #profile {
+  width: var(--width-collapsed);
+  margin: var(--margin-x);
+  margin-top: var(--top-separation);
+}
+
+.menu-collapsed #profile #photo img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.menu-collapsed #profile #name {
+  display: none;
+}
+
+.menu-collapsed #menu-items {
+  margin-top: var(--top-separation);
+}
+
+.menu-collapsed #menu-items a {
+  color: var(--text-color);
+  padding: 5px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.menu-collapsed #menu-items a .icon {
+  width: var(--width-collapsed);
+  margin: var(--margin-x);
+}
+
+.menu-collapsed #menu-items a .icon img {
+  width: 100%;
+}
+
+.menu-collapsed #menu-items a .title {
+  display: none;
+}
+
+.menu-collapsed #menu-items a:hover {
+  background-color: var(--primary-color);
+}
+
+.menu-collapsed [data-title]:hover:after {
+  opacity: 1;
+  -webkit-transition: all 0.1s ease 0.1s;
+  transition: all 0.1s ease 0.1s;
+  visibility: visible;
+}
+
+.menu-collapsed [data-title]:after {
+  content: attr(data-title);
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+  font-family: Raleway;
+  position: absolute;
+  padding: 3px 20px;
+  left: 100%;
+  white-space: nowrap;
+  -webkit-box-shadow: 1px 1px 3px #222222;
+          box-shadow: 1px 1px 3px #222222;
+  opacity: 0;
+  border: 1px solid #111111;
+  z-index: 99999;
+  visibility: hidden;
+}
+
+.menu-collapsed [data-title] {
+  position: relative;
+}
+/*# sourceMappingURL=style-sidebar.css.map */
